@@ -490,6 +490,11 @@ a img:hover {
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
+.contactArea .form-group span {
+    color: red !important;
+    font-family: "Be Vietnam Pro Regular", sans-serif !important;
+}
+
 .contactArea .form-group textarea {
     border: none;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);

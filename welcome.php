@@ -348,27 +348,28 @@
         <form action="">
             <div class="form-group">
                 <label for="name">Họ tên</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Họ tên">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Họ tên" required>
             </div>
             <div class="form-group">
                 <label for="email">Địa chỉ email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Địa chỉ email">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Địa chỉ email" required>
                 <span id="email-error">
                     <small class="text-danger"></small>
                 </span>
             </div>
             <div class="form-group">
                 <label for="phone">Số điện thoại</label>
-                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Số điện thoại">
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Số điện thoại" required>
                 <span id="phone-error">
                     <small class="text-danger"></small>
                 </span>
             </div>
             <div class="form-group">
                 <label for="message">Nội dung</label>
-                <textarea class="form-control" id="message" name="message" rows="3" placeholder="Nội dung"></textarea>
+                <textarea class="form-control" id="message" name="message" rows="3" placeholder="Nội dung"
+                          required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Gửi</button>
+            <button type="submit" class="btn btn-primary" disabled>Gửi</button>
         </form>
     </div>
 </div>
@@ -520,34 +521,37 @@
     const emailError = document.getElementById("email-error");
     const phoneError = document.getElementById("phone-error");
 
-    emailInput.addEventListener("input", function (event) {
-            const email = emailInput.value();
-            if (isValidateEmail(email)) {
-                emailError.textContent = "Email không hợp lệ";
-            } else {
-                emailError.textContent = "";
-            }
+    emailInput.addEventListener("input", function () {
+        const email = emailInput.value;
+        if (!isValidateEmail(email)) { // Sửa đoạn này
+            emailError.textContent = "Email không hợp lệ";
+        } else {
+            emailError.textContent = "";
         }
-    );
+        document.querySelector("button[type='submit']").disabled = !(isValidateEmail(emailInput.value) && isValidatePhone(phoneInput.value));
+    });
 
     function isValidateEmail(email) {
-        return email.includes("@") && email.includes(".") && email.length !== 0;
+        return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+            .test(email);
     }
 
 
-    phoneInput.addEventListener("input", function (event) {
-            const phone = phoneInput.value();
-            if (isValidatePhone(phone)) {
+    phoneInput.addEventListener("input", function () {
+            const phone = phoneInput.value;
+            if (!isValidatePhone(phone)) {
                 phoneError.textContent = "Số điện thoại không hợp lệ";
             } else {
                 phoneError.textContent = "";
             }
+            document.querySelector("button[type='submit']").disabled = !(isValidateEmail(emailInput.value) && isValidatePhone(phoneInput.value));
         }
     );
 
     function isValidatePhone(phone) {
-        return phone.length !== 10;
+        return phone.length === 10 && /^[0-9]*$/.test(phone);
     }
+
 
 </script>
 </html>
