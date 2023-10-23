@@ -359,12 +359,12 @@ a img:hover {
 @keyframes fadeIn {
     0% {
         opacity: 0;
-        transform: translateY(0);
+        /*transform: translateY(-20px);*/
     }
 
     100% {
         opacity: 1;
-        transform: translateY(-20px);
+        /*transform: translateY(0);*/
     }
 }
 
@@ -474,6 +474,45 @@ a img:hover {
     color: #1d2b53;
 }
 
+.contactArea {
+    background-color: #e8fcff;
+    padding-bottom: 50px;
+}
+
+.contactArea .form-group label {
+    color: #1d2b53;
+    font-family: "Be Vietnam Pro SemiBold", sans-serif !important;
+    font-weight: 500;
+}
+
+.contactArea .form-group input {
+    border: none;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.contactArea .form-group textarea {
+    border: none;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.contactArea .form-group input[placeholder] {
+    font-family: "Be Vietnam Pro Regular", sans-serif !important;
+}
+
+.contactArea .btn {
+    background-color: white;
+    color: #1d2b53;
+    outline: none;
+    border: none;
+    font-family: "Be Vietnam Pro Bold", sans-serif !important;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 10px 20px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
 .owl-prev span, .owl-next span {
     font-size: 40px;
 }
@@ -508,9 +547,18 @@ a img:hover {
 }
 
 footer {
-    background-color: #e8fcff;
+    background-color: #f8f9fa;
     color: #1d2b53;
     padding: 50px 0;
+    margin-top: -50px;
+}
+
+footer a i {
+    font-size: 20px;
+    margin-right: 10px;
+    color: #1d2b53;
+    margin-top: 15px;
+    margin-bottom: 20px;
 }
 
 footer h4 {

@@ -91,6 +91,9 @@
                 <a class="nav-link" href="#kmai">Khuyến mãi</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="#lhe">Liên Hệ</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="#ttin">Thông tin</a>
             </li>
         </ul>
@@ -334,10 +337,42 @@
                 </div>
             </div>
             <div class="owl-nav2"></div>
-
         </div>
     </div>
 </div>
+<div class="contactArea" id="lhe">
+    <div class="container">
+        <div class="section-title" data-aos="fade-up" data-aos-delay="0" data-aos-duration="1000">
+            <h1>Liên hệ</h1><br>
+        </div>
+        <form action="">
+            <div class="form-group">
+                <label for="name">Họ tên</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Họ tên">
+            </div>
+            <div class="form-group">
+                <label for="email">Địa chỉ email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Địa chỉ email">
+                <span id="email-error">
+                    <small class="text-danger"></small>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="phone">Số điện thoại</label>
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Số điện thoại">
+                <span id="phone-error">
+                    <small class="text-danger"></small>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="message">Nội dung</label>
+                <textarea class="form-control" id="message" name="message" rows="3" placeholder="Nội dung"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Gửi</button>
+        </form>
+    </div>
+</div>
+
 <br>
 <?php echo $error ?>
 <br>
@@ -346,7 +381,11 @@
         <div class="row">
             <div class="col-lg-4 col-md-6">
                 <img src="images/logo.png" alt="">
-
+                <br>
+                <a href="https://www.facebook.com/khanhgam.off/"><i class="fa fa-facebook"></i></a>
+                <a href="https://github.com/khanhdew/"><i class="fa fa-github"></i></a>
+                <a href="https://www.instagram.com/khanhdew/"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/khanhdev-work/"><i class="fa fa-linkedin"></i></a>
             </div>
             <div class="col-lg-4 col-md-6">
                 <h4>Thông tin</h4>
@@ -454,7 +493,7 @@
         }
     });
     // Lắng nghe sự kiện click trên các liên kết Scrollspy
-    document.querySelectorAll('a').forEach(function (link) {
+    document.querySelectorAll('li a').forEach(function (link) {
         link.addEventListener('click', function (e) {
             e.preventDefault();
 
@@ -474,6 +513,41 @@
             });
         });
     });
+
+    //Validation
+    const emailInput = document.getElementById("email");
+    const phoneInput = document.getElementById("phone");
+    const emailError = document.getElementById("email-error");
+    const phoneError = document.getElementById("phone-error");
+
+    emailInput.addEventListener("input", function (event) {
+            const email = emailInput.value();
+            if (isValidateEmail(email)) {
+                emailError.textContent = "Email không hợp lệ";
+            } else {
+                emailError.textContent = "";
+            }
+        }
+    );
+
+    function isValidateEmail(email) {
+        return email.includes("@") && email.includes(".") && email.length !== 0;
+    }
+
+
+    phoneInput.addEventListener("input", function (event) {
+            const phone = phoneInput.value();
+            if (isValidatePhone(phone)) {
+                phoneError.textContent = "Số điện thoại không hợp lệ";
+            } else {
+                phoneError.textContent = "";
+            }
+        }
+    );
+
+    function isValidatePhone(phone) {
+        return phone.length !== 10;
+    }
 
 </script>
 </html>
